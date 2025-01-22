@@ -27,8 +27,9 @@ export default function AuthorDashboard() {
   }, []);
 
   const fetchPosts = async () => {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
+      const response = await fetch(`${baseUrl}/api/posts`);
       const data = await response.json();
       setPosts(data);
     } catch (error) {
