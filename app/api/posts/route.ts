@@ -6,14 +6,7 @@ import { authOptions } from "@/app/lib/authOptions";
 import isEmail from "validator/lib/isEmail";
 import { normalizeEmail } from "validator";
 
-interface SessionUser {
-  email: string;
-  // other user properties
-}
 
-interface Session {
-  user?: SessionUser;
-}
 
 export async function GET() {
   try {
