@@ -10,7 +10,6 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
-    // Check if user is authenticated and has val
     if (!session?.user?.email || !isEmail(session.user.email)) {
       return NextResponse.json(
         { error: "Invalid or missing email" },
