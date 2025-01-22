@@ -6,10 +6,20 @@ import { authOptions } from "@/app/lib/authOptions";
 import isEmail from "validator/lib/isEmail";
 import { normalizeEmail } from "validator";
 
+interface SessionUser {
+  email: string;
+  // other user properties
+}
+
+interface Session {
+  user?: SessionUser;
+}
+
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (!session?.user?.email || !isEmail(session.user.email)) {
       return NextResponse.json(
         { error: "Invalid or missing email" },
