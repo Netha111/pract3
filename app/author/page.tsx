@@ -28,7 +28,7 @@ export default function AuthorDashboard() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('/api/posts');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -51,7 +51,7 @@ export default function AuthorDashboard() {
     }
 
     try {
-      const response = await fetch('/api/posts/create', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

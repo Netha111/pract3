@@ -22,7 +22,7 @@ export default function BlogPage() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('/api/posts');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
       const data = await response.json();
       
       if (!response.ok) {

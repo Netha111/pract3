@@ -60,7 +60,7 @@ const BuyProduct = () => {
         return;
       }
 
-      const response = await fetch(`/api/razorpay`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/razorpay`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const BuyProduct = () => {
         handler: async function (response: RazorpayResponse) {
           try {
             // First verify the payment
-            const verifyResponse = await fetch(`/api/paymentverify`, {
+            const verifyResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paymentverify`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
