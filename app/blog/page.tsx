@@ -12,7 +12,6 @@ export default function BlogPage() {
   const { data: session, status } = useSession();
   const [posts, setPosts] = React.useState<IPost[]>([]);
   const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState<string | null>(null);
   const [requiresPayment, setRequiresPayment] = React.useState(false);
 
   React.useEffect(() => {
@@ -35,11 +34,9 @@ export default function BlogPage() {
       }
 
       setPosts(data);
-      setError(null);
       setRequiresPayment(false);
     } catch (error) {
       console.error('Error fetching posts:', error);
-      setError(error instanceof Error ? error.message : 'Failed to fetch posts');
       setPosts([]);
     } finally {
       setLoading(false);
